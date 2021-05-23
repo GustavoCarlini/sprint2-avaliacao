@@ -41,6 +41,28 @@ class Atendimento {
             }
         })
     }
+    update(id, valores, res){
+        const sql = 'UPDATE REPLACEMENT_PART SET ? WHERE id=?'
+
+        conexao.query(sql, [valores, id], (erro, resultados) =>{
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json(resultados)
+            }
+        })
+
+    }
+    delete(id, res){
+        const sql = 'DELETE FROM REPLACEMENT_PART WHERE id=?'
+        conexao.query(sql, id, (erro, resultados) =>{
+            if(erro){
+                res.status(400).json(erro)
+            }else{
+                res.status(200).json({id})
+            }
+        })
+    }
 
 }
 
